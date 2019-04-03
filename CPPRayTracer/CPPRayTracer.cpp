@@ -6,14 +6,20 @@
 #include <time.h>
 #include <FreeImage.h>
 
+#include "Scene.h"
+
 using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
 	clock_t t1, t2;
 	t1 = clock();
 	FreeImage_Initialise();
+	std::cout << "Raytracer Start\n";
+
+	Scene main_scene = Scene();
+	main_scene.render();
+
 
 	FreeImage_DeInitialise();
 	t2 = clock();
