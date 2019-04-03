@@ -3,10 +3,22 @@
 
 #include "pch.h"
 #include <iostream>
+#include <time.h>
+#include <FreeImage.h>
+
+using namespace std;
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	clock_t t1, t2;
+	t1 = clock();
+	FreeImage_Initialise();
+
+	FreeImage_DeInitialise();
+	t2 = clock();
+	cout << "Ran for " << (((float)t2 - (float)t1) / CLOCKS_PER_SEC) << " seconds" << endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
