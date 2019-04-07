@@ -4,10 +4,10 @@
 #include "Sampler.h"
 #include "Sample.h"
 #include <iostream>
-//#include "Film.h"
+#include "Film.h"
 #include "Ray.h"
-//#include "RayTracer.h"
-//#include "Camera.h"
+#include "RayTracer.h"
+#include "Camera.h"
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include "variables.h"
@@ -25,9 +25,9 @@ private:
 	int _imgDimsY; // Pixel dimenstions of output image
 
 	Sampler _sampler;
-	//Film _film;
-	//Camera _camera;
-	//RayTracer _raytracer;
+	Film _film;
+	Camera _camera;
+	RayTracer _raytracer;
 
 
 public:

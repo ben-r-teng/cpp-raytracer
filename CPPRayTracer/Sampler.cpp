@@ -24,7 +24,7 @@ Sampler::~Sampler()
 
 bool Sampler::getSample(Sample * sample)
 {
-	// std::cout << "Sampler curr x: " << this->_currPixelCoordX << " and sample y: " << this->_currPixelCoordY << "\n";
+	 //std::cout << "Sampler curr x: " << this->_currPixelCoordX << " and sample y: " << this->_currPixelCoordY << "\n";
 
 	// All Samples for this pixel loc acquired
 	if(this->_pixelsSampled >= this->_samplesPerPixel){

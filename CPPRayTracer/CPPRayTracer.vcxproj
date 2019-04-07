@@ -159,7 +159,9 @@
   <ItemGroup>
     <ClInclude Include="AllPrimitives.h" />
     <ClInclude Include="BRDF.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Film.h" />
     <ClInclude Include="GeoPrimitive.h" />
     <ClInclude Include="Intersection.h" />
     <ClInclude Include="Light.h" />
@@ -168,6 +170,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Printer.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="RayTracer.h" />
     <ClInclude Include="Sample.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="Scene.h" />
@@ -179,8 +182,10 @@
   <ItemGroup>
     <ClCompile Include="AllPrimitives.cpp" />
     <ClCompile Include="BRDF.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CPPRayTracer.cpp" />
+    <ClCompile Include="Film.cpp" />
     <ClCompile Include="GeoPrimitive.cpp" />
     <ClCompile Include="Intersection.cpp" />
     <ClCompile Include="Light.cpp" />
@@ -194,6 +199,7 @@
     </ClCompile>
     <ClCompile Include="Printer.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Sample.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="Scene.cpp" />

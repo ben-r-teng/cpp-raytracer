@@ -4,7 +4,7 @@
 
 Printer::Printer()
 {
-	this->_myfile.open("cout.txt");
+	this->_myfile.open("printer_log.txt");
 }
 
 
