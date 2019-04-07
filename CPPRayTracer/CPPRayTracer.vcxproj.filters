@@ -13,24 +13,138 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Geometry">
+      <UniqueIdentifier>{f1418ac4-c17c-48f5-9a1f-2b8a7d20c9f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Properties">
+      <UniqueIdentifier>{a00f6cc8-573e-4ee4-9f44-afe763c17795}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main">
+      <UniqueIdentifier>{0027dfc6-baa6-4b31-9c8c-8ef8767c39aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Geometry">
+      <UniqueIdentifier>{76d5208a-4f7e-4a9c-804b-08fccb4c6de8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Main">
+      <UniqueIdentifier>{61f818a3-b791-492d-83cc-b8ed4f25c408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Properties">
+      <UniqueIdentifier>{bd753296-7e36-46de-ae5b-2d5ba395e8de}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="GeoPrimitive.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="AllPrimitives.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="BRDF.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="Intersection.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Transformation.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="variables.h">
+      <Filter>Header Files\Main</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Shape.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Printer.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="LocalGeo.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>Header Files\Properties</Filter>
+    </ClInclude>
+    <ClInclude Include="Sample.h">
+      <Filter>Header Files\Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Sampler.h">
+      <Filter>Header Files\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files\Geometry</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="AllPrimitives.cpp">
+      <Filter>Source Files\Geometry</Filter>
     </ClCompile>
-    <ClCompile Include="CPPRayTracer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GeoPrimitive.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Intersection.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Sample.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Shape.cpp">
+      <Filter>Source Files\Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Printer.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Sampler.cpp">
+      <Filter>Source Files\Main</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="variables.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="BRDF.cpp">
+      <Filter>Source Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Source Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="LocalGeo.cpp">
+      <Filter>Source Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="Transformation.cpp">
+      <Filter>Source Files\Properties</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CPPRayTracer.cpp">
+      <Filter>Source Files\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

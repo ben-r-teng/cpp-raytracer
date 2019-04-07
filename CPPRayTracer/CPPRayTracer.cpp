@@ -7,6 +7,7 @@
 #include <FreeImage.h>
 
 #include "Scene.h"
+#include "Triangle.h"
 
 using namespace std;
 
@@ -16,8 +17,47 @@ int main()
 	t1 = clock();
 	FreeImage_Initialise();
 	std::cout << "Raytracer Start\n";
+	vector<GeoPrimitive*> primitives;
+	AllPrimitives allPrims = AllPrimitives(primitives);
+	
+	// Test Image
+	g_imgdimsx = 640;
+	g_imgdimsy = 480;
 
-	Scene main_scene = Scene();
+	g_lookFrom.x = -4;
+	g_lookFrom.y = -4;
+	g_lookFrom.z = 4;
+	g_lookAt.x   = 1;
+	g_lookAt.y   = 0;
+	g_lookAt.z   = 0;
+	g_upVec.x    = 0;
+	g_upVec.y    = 1;
+	g_upVec.z    = 0;
+	g_fovy       = 30;
+
+	BRDF currBRDF = BRDF();
+	currBRDF = BRDF(vec3(1, 0, 0), currBRDF._ksh, currBRDF._kd, currBRDF._ksp, currBRDF._ke);
+	int maxverts = 4;
+	vector<vec3> vertices;
+	vertices.push_back(vec3(-1, -1, 0));
+	vertices.push_back(vec3( 1, -1, 0));
+	vertices.push_back(vec3( 1,  1, 0));
+	vertices.push_back(vec3(-1, +1, 0));
+
+    Triangle * triangle = new Triangle(vertices.at(0), vertices.at(1), vertices.at(2));
+	Shape * shape = triangle;
+	Material* currMat = new Material(currBRDF);
+	GeoPrimitive* geoPrim = new GeoPrimitive(shape, currMat, mat4(1.0));
+	allPrims._primList.push_back(geoPrim);
+
+    Triangle * triangle2 = new Triangle(vertices.at(0), vertices.at(1), vertices.at(2));
+	Shape * shape2 = triangle2;
+	Material* currMat2 = new Material(currBRDF);
+	GeoPrimitive* geoPrim2 = new GeoPrimitive(shape2, currMat2, mat4(1.0));
+	allPrims._primList.push_back(geoPrim2);
+
+
+	Scene main_scene = Scene(g_lookFrom, g_imgdimsx, g_imgdimsy, g_fovy, &allPrims);
 	main_scene.render();
 
 
