@@ -23,8 +23,8 @@ Camera::Camera(vec3 _lookFrom, vec3 _lookAt, vec3 _upVec, float _fovy, int _imgD
 	vec3 a = this->_lookFrom - this->_lookAt;
 	vec3 b = this->_upVec;
 
-	g_printer->printVec("LookVec: ", a);
-	g_printer->printVec("UpVec: ", b);
+	//g_printer->printVec("LookVec: ", a);
+	//g_printer->printVec("UpVec: ", b);
 
 
 	//Make Coord Frame

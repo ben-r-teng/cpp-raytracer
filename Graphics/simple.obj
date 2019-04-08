@@ -1,0 +1,12 @@
+# Blender v2.79 (sub 0) OBJ File: 'simple.blend'
+# www.blender.org
+mtllib simple.mtl
+o Plane.001
+v -5.557195 -15.244648 2.479969
+v 3.715873 -14.622493 6.538112
+v -1.462668 -15.911798 -6.773958
+v 7.810400 -15.289642 -2.715814
+vn -0.0297 0.9959 -0.0849
+usemtl None
+s off
+f 1//1 2//1 4//1 3//1

@@ -4,11 +4,15 @@
 #define TINYOBJLOADER_IMPLEMENTATION // define this in only *one* .cc
 #include <tiny_obj_loader.h>
 #include <iostream>
+#include "AllPrimitives.h"
+#include "Triangle.h"
 
 
 using namespace std;
+using namespace tinyobj;
 
 
-//void readfile(const char * filename, AllPrimitives& allPrims);
-void readfile();
+void readfile(string filename, AllPrimitives& allPrims);
+//void readfile();
+void printRealVector(string name, vector<real_t> vert);
 

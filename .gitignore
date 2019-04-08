@@ -77,5 +77,6 @@ bld/
 [Oo]bj/
 [Ll]og/
 
-# Project-Specific Files
+# Project-Specific Output Files
 CPPRayTracer/printer_log.txt
+CPPRayTracer/outputImg.png
