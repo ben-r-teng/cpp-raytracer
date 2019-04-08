@@ -6,6 +6,7 @@
 #include <time.h>
 #include <FreeImage.h>
 
+#include "Loader.h"
 #include "Scene.h"
 #include "Triangle.h"
 
@@ -19,6 +20,8 @@ int main()
 	std::cout << "Raytracer Start\n";
 	vector<GeoPrimitive*> primitives;
 	AllPrimitives allPrims = AllPrimitives(primitives);
+
+	readfile();
 	
 	// Test Image
 	g_imgdimsx = 640;

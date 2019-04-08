@@ -106,7 +106,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\FreeImage;$(SolutionDir)Dependencies\glm;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\FreeImage;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\tiny_obj_loader;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,7 +145,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\FreeImage;$(SolutionDir)Dependencies\glm;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\FreeImage;$(SolutionDir)Dependencies\glm;$(SolutionDir)Dependencies\tiny_obj_loader;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -165,6 +165,7 @@
     <ClInclude Include="GeoPrimitive.h" />
     <ClInclude Include="Intersection.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Loader.h" />
     <ClInclude Include="LocalGeo.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
@@ -189,6 +190,7 @@
     <ClCompile Include="GeoPrimitive.cpp" />
     <ClCompile Include="Intersection.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Loader.cpp" />
     <ClCompile Include="LocalGeo.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="pch.cpp">
