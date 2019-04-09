@@ -12,7 +12,7 @@ using namespace std;
 using namespace tinyobj;
 
 
-void readfile(string filename, AllPrimitives& allPrims);
+void readfile(string filename, string mtlPath, AllPrimitives& allPrims);
 //void readfile();
 void printRealVector(string name, vector<real_t> vert);
 

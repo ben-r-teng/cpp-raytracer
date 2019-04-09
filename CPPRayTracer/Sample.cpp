@@ -4,6 +4,9 @@
 
 Sample::Sample()
 {
+	this->_x = 0;
+	this->_y = 0;
+
 }
 
 Sample::Sample(float x, float y)

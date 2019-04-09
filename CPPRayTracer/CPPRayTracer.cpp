@@ -9,6 +9,8 @@
 #include "Loader.h"
 #include "Scene.h"
 #include "Triangle.h"
+#include "Light.h"
+#include "PointLight.h"
 
 using namespace std;
 
@@ -21,7 +23,7 @@ int main()
 	vector<GeoPrimitive*> primitives;
 	AllPrimitives allPrims = AllPrimitives(primitives);
 
-	readfile("../Graphics/simple.obj", allPrims);
+	readfile("../Graphics/simple.obj", "../Graphics/", allPrims);
 	
 	// Test Image
 	g_imgdimsx = 640;
@@ -40,27 +42,11 @@ int main()
 	g_upVec.z    = 0;
 	g_fovy       = 30;
 
-	//BRDF currBRDF = BRDF();
-	//currBRDF = BRDF(vec3(1, 0, 0), currBRDF._ksh, currBRDF._kd, currBRDF._ksp, currBRDF._ke);
-	//int maxverts = 4;
-	//vector<vec3> vertices;
-	//vertices.push_back(vec3(-1, -1, 0));
-	//vertices.push_back(vec3( 1, -1, 0));
-	//vertices.push_back(vec3( 1,  1, 0));
-	//vertices.push_back(vec3(-1, +1, 0));
-
- //   Triangle * triangle = new Triangle(vertices.at(0), vertices.at(1), vertices.at(2));
-	//Shape * shape = triangle;
-	//Material* currMat = new Material(currBRDF);
-	//GeoPrimitive* geoPrim = new GeoPrimitive(shape, currMat, mat4(1.0));
-	//allPrims._primList.push_back(geoPrim);
-
- //   Triangle * triangle2 = new Triangle(vertices.at(0), vertices.at(1), vertices.at(2));
-	//Shape * shape2 = triangle2;
-	//Material* currMat2 = new Material(currBRDF);
-	//GeoPrimitive* geoPrim2 = new GeoPrimitive(shape2, currMat2, mat4(1.0));
-	//allPrims._primList.push_back(geoPrim2);
-
+	vec3 lightLoc = vec3(0, 0, 0);
+	vec3 lightColor = vec3(.6, .6, .6);
+	PointLight* ptLight = new PointLight(lightLoc, lightColor);
+	Light* light = ptLight;
+	allPrims._lights.push_back(light);
 
 	Scene main_scene = Scene(g_lookFrom, g_imgdimsx, g_imgdimsy, g_fovy, &allPrims);
 	main_scene.render();

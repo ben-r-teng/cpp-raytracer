@@ -161,6 +161,7 @@
     <ClInclude Include="BRDF.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="DirnLight.h" />
     <ClInclude Include="Film.h" />
     <ClInclude Include="GeoPrimitive.h" />
     <ClInclude Include="Intersection.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="LocalGeo.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="Printer.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="RayTracer.h" />
@@ -186,6 +188,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="CPPRayTracer.cpp" />
+    <ClCompile Include="DirnLight.cpp" />
     <ClCompile Include="Film.cpp" />
     <ClCompile Include="GeoPrimitive.cpp" />
     <ClCompile Include="Intersection.cpp" />
@@ -199,6 +202,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="Printer.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="RayTracer.cpp" />
