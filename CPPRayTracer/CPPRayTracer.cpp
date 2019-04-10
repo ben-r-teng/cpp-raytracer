@@ -23,11 +23,12 @@ int main()
 	vector<GeoPrimitive*> primitives;
 	AllPrimitives allPrims = AllPrimitives(primitives);
 
-	readfile("../Graphics/simple.obj", "../Graphics/", allPrims);
+	readfile("../Graphics/intermediate.obj", "../Graphics/", allPrims);
 	
 	// Test Image
-	g_imgdimsx = 640;
-	g_imgdimsy = 480;
+	int imageScale = 4;
+	g_imgdimsx = 750/imageScale;
+	g_imgdimsy = 480/imageScale;
 
 	g_lookFrom.x = 0;
 	g_lookFrom.y = 0;
@@ -37,12 +38,12 @@ int main()
 	g_lookAt.y   = -1;
 	g_lookAt.z   = 0;
 
-	g_upVec.x    = 1;
+	g_upVec.x    = 0;
 	g_upVec.y    = 0;
-	g_upVec.z    = 0;
+	g_upVec.z    = -1;
 	g_fovy       = 30;
 
-	vec3 lightLoc = vec3(0, 0, 0);
+	vec3 lightLoc = vec3(0, -0.5, 0);
 	vec3 lightColor = vec3(.6, .6, .6);
 	PointLight* ptLight = new PointLight(lightLoc, lightColor);
 	Light* light = ptLight;

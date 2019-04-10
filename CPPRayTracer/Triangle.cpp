@@ -6,13 +6,15 @@ Triangle::Triangle()
 {
 }
 
-Triangle::Triangle(vec3 _v0, vec3 _v1, vec3 _v2)
+Triangle::Triangle(vec3 _v0, vec3 _v1, vec3 _v2, vec3 _normal0, vec3 _normal1, vec3 _normal2)
 {
 	this->_v0 = _v0;
 	this->_v1 = _v1;
 	this->_v2 = _v2;	
 	this->_normal = normalize(cross((this->_v1 - this->_v0), (this->_v2 - this->_v0)));
-
+	this->_normal0 = _normal0;
+	this->_normal1 = _normal1;
+	this->_normal2 = _normal2;
 	//g_printer->printVec("Normal: ", this->_normal);
 }
 
@@ -52,6 +54,16 @@ bool Triangle::intersect(Ray & ray, float * thit, LocalGeo * local)
 		if (dot(this->_normal, cross(edge0, vP0)) >= 0 &&
 			dot(this->_normal, cross(edge1, vP1)) >= 0 &&
 			dot(this->_normal, cross(edge2, vP2)) >= 0) {
+			//float y12 = (this->_v1.y - this->_v2.y);
+			//float y02 = (this->_v0.y - this->_v2.y);
+			//float x21 = (this->_v2.x - this->_v1.x);
+			//float x02 = (this->_v0.x - this->_v2.x);
+			//float px2 = (intPt.x - this->_v2.x);
+			//float py2 = (intPt.y - this->_v2.y);
+
+			//float w0 = (y12 * px2 + x21 * py2)
+			//		  /(y12 * x02 + x21 * y02);
+
 			// Sets the object that thit points to
 			*thit  =  t;
 			*local = LocalGeo(intPt, this->_normal);

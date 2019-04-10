@@ -11,24 +11,23 @@ void readfile(string filename, string mtlPath, AllPrimitives& allPrims)
 	string err;
 
 	int numTriangles = 0;
-	vec3 v0, v1, v2;
+	vec3 v0, v1, v2, vn0, vn1, vn2;
 
-//	MaterialFileReader mtlReader(mtlPath);
 	bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, filename.c_str(), mtlPath.c_str());
 
-	printRealVector("vertices",  attrib.vertices);
-	printRealVector("normals",   attrib.normals);
-	printRealVector("texcoords", attrib.texcoords);
-	printRealVector("colors",    attrib.colors);
+	//printRealVector("vertices",  attrib.vertices);
+	//printRealVector("normals",   attrib.normals);
+	//printRealVector("texcoords", attrib.texcoords);
+	//printRealVector("colors",    attrib.colors);
 
-	cout << "Mat Size: " << materials.size() << "\n";
+	//cout << "Mat Size: " << materials.size() << "\n";
 
-	for (int i = 0; i < shapes.size(); i++) {
-		cout << shapes[i].name + "\n";
-		cout << "Vertex Ind: \n";
-		for (int j = 0; j < shapes[i].mesh.indices.size(); j++) {
-			cout << shapes[i].mesh.indices[j].vertex_index << "\n";
-		}
+	for (size_t i = 0; i < shapes.size(); i++) {
+		//cout << shapes[i].name + "\n";
+		//cout << "Vertex Ind: \n";
+		//for (int j = 0; j < shapes[i].mesh.indices.size(); j++) {
+		//	cout << shapes[i].mesh.indices[j].vertex_index << "\n";
+		//}
 
 		numTriangles = shapes[i].mesh.indices.size() / 3;
 		for (size_t j = 0; j < numTriangles; j++) {
@@ -38,9 +37,9 @@ void readfile(string filename, string mtlPath, AllPrimitives& allPrims)
 			// vec3 ambient = vec3(mat.ambient[0], mat.ambient[1], mat.ambient[2]);
 			vec3 diffuse = vec3(mat.diffuse[0], mat.diffuse[1], mat.diffuse[2]);
 			vec3 specular = vec3(mat.specular[0], mat.specular[1], mat.specular[2]);
-			g_printer->printVec("ambient", ambient);
-			g_printer->printVec("diffuse", diffuse);
-			g_printer->printVec("specular", specular);
+			//g_printer->printVec("ambient", ambient);
+			//g_printer->printVec("diffuse", diffuse);
+			//g_printer->printVec("specular", specular);
 
 			currBRDF = BRDF(ambient, mat.shininess, diffuse, specular, currBRDF._ke);
 
@@ -54,7 +53,17 @@ void readfile(string filename, string mtlPath, AllPrimitives& allPrims)
 				      attrib.vertices[((size_t)shapes[i].mesh.indices[j*3 + 2].vertex_index) * 3 + 1],
 				      attrib.vertices[((size_t)shapes[i].mesh.indices[j*3 + 2].vertex_index) * 3 + 2]);
 
-			Triangle * triangle = new Triangle(v0, v1, v2);
+			vn0 = vec3(attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 0].normal_index) * 3 + 0],
+				       attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 0].normal_index) * 3 + 1],
+				       attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 0].normal_index) * 3 + 2]);
+			vn1 = vec3(attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 1].normal_index) * 3 + 0],
+				       attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 1].normal_index) * 3 + 1],
+				       attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 1].normal_index) * 3 + 2]);
+			vn2 = vec3(attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 2].normal_index) * 3 + 0],
+				       attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 2].normal_index) * 3 + 1],
+				       attrib.normals[((size_t)shapes[i].mesh.indices[j*3 + 2].normal_index) * 3 + 2]);
+
+			Triangle * triangle = new Triangle(v0, v1, v2, vn0, vn1, vn2);
 			Shape * shape = triangle;
 			Material * currMat = new Material(currBRDF);
 			GeoPrimitive * geoPrim = new GeoPrimitive(shape, currMat, mat4(1.0));
