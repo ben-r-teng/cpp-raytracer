@@ -26,7 +26,7 @@ int main()
 	readfile("../Graphics/intermediate.obj", "../Graphics/", allPrims);
 	
 	// Test Image
-	int imageScale = 4;
+	int imageScale = 1;
 	g_imgdimsx = 750/imageScale;
 	g_imgdimsy = 480/imageScale;
 

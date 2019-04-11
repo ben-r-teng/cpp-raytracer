@@ -41,34 +41,61 @@ bool Triangle::intersect(Ray & ray, float * thit, LocalGeo * local)
 		//g_printer->printVec("Intersection Pt: ", intPt);
 
 		// This automatically checks if the triangle is in a line
-		vec3 edge0 = this->_v1 - this->_v0;
-		vec3 edge1 = this->_v2 - this->_v1;
-		vec3 edge2 = this->_v0 - this->_v2;
-		vec3 vP0 = intPt - this->_v0;
-		vec3 vP1 = intPt - this->_v1;
-		vec3 vP2 = intPt - this->_v2;
 
-		//g_printer->printVec("edge det: ", vec3(dot(this->_normal, cross(edge0, vP0)), dot(this->_normal, cross(edge1, vP1)), dot(this->_normal, cross(edge2, vP2))));
-
-		// Checks if the intersection point lies in the triangle
-		if (dot(this->_normal, cross(edge0, vP0)) >= 0 &&
-			dot(this->_normal, cross(edge1, vP1)) >= 0 &&
-			dot(this->_normal, cross(edge2, vP2)) >= 0) {
-			//float y12 = (this->_v1.y - this->_v2.y);
-			//float y02 = (this->_v0.y - this->_v2.y);
-			//float x21 = (this->_v2.x - this->_v1.x);
-			//float x02 = (this->_v0.x - this->_v2.x);
-			//float px2 = (intPt.x - this->_v2.x);
-			//float py2 = (intPt.y - this->_v2.y);
-
-			//float w0 = (y12 * px2 + x21 * py2)
-			//		  /(y12 * x02 + x21 * y02);
-
-			// Sets the object that thit points to
-			*thit  =  t;
-			*local = LocalGeo(intPt, this->_normal);
-			return true;
+		float paraU = dot(cross(intPt - this->_v0, this->_v2 - this->_v0), this->_normal);
+		
+		if (paraU < 0) {
+			return false;
 		}
+		float paraV = dot(cross(intPt - this->_v1, this->_v0 - this->_v1), this->_normal);
+		if (paraV < 0) {
+			return false;
+		}
+		float paraW = dot(cross(intPt - this->_v2, this->_v1 - this->_v2), this->_normal);
+		if (paraW < 0) {
+			return false;
+		}
+		
+		float paraArea = dot(cross((this->_v1 - this->_v0), (this->_v2 - this->_v0)), this->_normal);
+		float weightU = paraU/paraArea;
+		float weightV = paraV/paraArea;
+		float weightW = paraW/paraArea;
+
+		*thit = t;
+		vec3 interpNormal = weightW * this->_normal0 + weightU * this->_normal1 + weightV * this->_normal2;
+		*local = LocalGeo(intPt, interpNormal);
+
+		return true;
+
+
+		// vec3 edge0 = this->_v1 - this->_v0;
+		// vec3 edge1 = this->_v2 - this->_v1;
+		// vec3 edge2 = this->_v0 - this->_v2;
+		// vec3 vP0 = intPt - this->_v0;
+		// vec3 vP1 = intPt - this->_v1;
+		// vec3 vP2 = intPt - this->_v2;
+
+		// //g_printer->printVec("edge det: ", vec3(dot(this->_normal, cross(edge0, vP0)), dot(this->_normal, cross(edge1, vP1)), dot(this->_normal, cross(edge2, vP2))));
+
+		// // Checks if the intersection point lies in the triangle
+		// if (dot(this->_normal, cross(edge0, vP0)) >= 0 &&
+		// 	dot(this->_normal, cross(edge1, vP1)) >= 0 &&
+		// 	dot(this->_normal, cross(edge2, vP2)) >= 0) {
+		// 	//float y12 = (this->_v1.y - this->_v2.y);
+		// 	//float y02 = (this->_v0.y - this->_v2.y);
+		// 	//float x21 = (this->_v2.x - this->_v1.x);
+		// 	//float x02 = (this->_v0.x - this->_v2.x);
+		// 	//float px2 = (intPt.x - this->_v2.x);
+		// 	//float py2 = (intPt.y - this->_v2.y);
+
+		// 	//float w0 = (y12 * px2 + x21 * py2)
+		// 	//		  /(y12 * x02 + x21 * y02);
+
+		// 	// Sets the object that thit points to
+		// 	*thit  =  t;
+		// 	*local = LocalGeo(intPt, this->_normal);
+		// 	return true;
+		//}
 	}
 	return false;	
 }
