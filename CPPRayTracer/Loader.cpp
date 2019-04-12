@@ -29,7 +29,7 @@ void readfile(string filename, string mtlPath, AllPrimitives& allPrims)
 		//	cout << shapes[i].mesh.indices[j].vertex_index << "\n";
 		//}
 
-		numTriangles = shapes[i].mesh.indices.size() / 3;
+		numTriangles = ((int) shapes[i].mesh.indices.size()) / 3;
 		for (size_t j = 0; j < numTriangles; j++) {
 			BRDF currBRDF = BRDF();
 			material_t mat = materials[shapes[i].mesh.material_ids[j]];

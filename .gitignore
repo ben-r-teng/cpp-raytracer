@@ -80,3 +80,4 @@ bld/
 # Project-Specific Output Files
 CPPRayTracer/printer_log.txt
 CPPRayTracer/outputImg.png
+Graphics/*.png

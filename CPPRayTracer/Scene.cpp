@@ -11,8 +11,7 @@ Scene::Scene(vec3 eyeLoc, int imgDimsX, int imgDimsY, float fovy_in, AllPrimitiv
 	this->_imgDimsX = imgDimsX;
 	this->_imgDimsY = imgDimsY;
 
-	int samplesperpixel = 1;
-	this->_sampler = Sampler(samplesperpixel, imgDimsX, imgDimsY);
+	this->_sampler = Sampler(g_samplesPerPixel, imgDimsX, imgDimsY);
 	this->_film = Film(imgDimsX, imgDimsY);
 
 	float fovy = (float(M_PI)) / 180.0f*fovy_in;
@@ -37,18 +36,25 @@ void Scene::render()
 	float progressBar = 0;
 	std::cout << "Start Rendering\n";
 	//may return 0 when not able to detect
-	int concurentThreadsSupported = thread::hardware_concurrency();
+	int concurentThreadsSupported = thread::hardware_concurrency()*2;
 
 	if (concurentThreadsSupported > 1 && g_multithreadCPU) {
 		cout << "Multithreading Mode Enabled\n";
 		cout << "Concurent Threads Supported: " << concurentThreadsSupported << "\n";
 		int thread_dimsY = this->_imgDimsY / concurentThreadsSupported;
+		vector<thread> threads;
 		for (int i = 0; i < concurentThreadsSupported; i++) {
-			float yStart = thread_dimsY * i;
-			float yEnd = min(this->_imgDimsY, thread_dimsY * (i+1));
-			
-//			renderThread();
+			int startY = thread_dimsY * i;
+			int endY = min(this->_imgDimsY, thread_dimsY * (i+1));
+			cout << "Start: "<<startY<< " End: " << endY<< "\n";
+			//renderThread(startY, endY);
 
+			thread th(&Scene::renderThread, this, startY, endY);
+			threads.push_back(move(th));
+		}
+
+		for (int i = 0; i < concurentThreadsSupported; i++) {
+			threads.at(i).join();
 		}
 	}
 	else {
@@ -66,29 +72,27 @@ void Scene::render()
 
 			this->_film.commit(sample, refColor);
 		}
+		cout << round(progressBar * 100.0f) << "% processed\n";
 	}
 
 	// Completed and now Writing the image
-	cout << round(progressBar * 100.0f) << "% processed\n";
 	std::cout << "Writing Image\n";
 	_film.writeImage();
 	std::cout << "Completed Rendering\n";
 }
 
-/*
-void Scene::renderThread() {
+void Scene::test() {
+	cout << "In a thread\n";
+}
+
+void Scene::renderThread(int startY, int endY) {
 	Sample sample = Sample();
 	Color color = Color(0.0f, 0.0f, 0.0f);
 	Color& refColor = color;
 	Ray ray;
-	Sampler threadSampler = Sampler(samplesperpixel, imgDimsX, imgDimsY);
+	Sampler threadSampler = Sampler(g_samplesPerPixel, this->_imgDimsX, endY, startY);
 
 	while (threadSampler.getSample(&sample)) {
-		if (this->_imgDimsX * this->_imgDimsY * progressBar < pixelsProcessed) {
-			cout << round(progressBar * 100.0f) << "% processed\n";
-			progressBar += 0.01f;
-		}
-		pixelsProcessed++;
 
 		ray = this->_camera.generateRay(sample);
 		int startingDepth = 0;
@@ -98,4 +102,3 @@ void Scene::renderThread() {
 		this->_film.commit(sample, refColor);
 	}
 }
-*/

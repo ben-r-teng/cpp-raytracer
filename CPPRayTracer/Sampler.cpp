@@ -1,9 +1,8 @@
 #include "pch.h"
 #include "Sampler.h"
 
+Sampler::Sampler() {
 
-Sampler::Sampler()
-{
 }
 
 Sampler::Sampler(int samplesPerPixel, int imgDimsX, int imgDimsY)
@@ -14,6 +13,16 @@ Sampler::Sampler(int samplesPerPixel, int imgDimsX, int imgDimsY)
 
 	this->_currPixelCoordX = 0; // Curr Pixel being sampled
 	this->_currPixelCoordY = 0;
+	this->_pixelsSampled   = 0;
+}
+Sampler::Sampler(int samplesPerPixel, int imgDimsX, int imgDimsY, int _currPixelCoordY)
+{
+	this->_samplesPerPixel = samplesPerPixel;
+	this->_imgDimsX        = imgDimsX;
+	this->_imgDimsY        = imgDimsY;	
+
+	this->_currPixelCoordX = 0; // Curr Pixel being sampled
+	this->_currPixelCoordY = _currPixelCoordY;
 	this->_pixelsSampled   = 0;
 }
 

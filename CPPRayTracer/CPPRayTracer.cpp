@@ -23,10 +23,10 @@ int main()
 	vector<GeoPrimitive*> primitives;
 	AllPrimitives allPrims = AllPrimitives(primitives);
 
-	readfile("../Graphics/intermediate.obj", "../Graphics/", allPrims);
+	readfile("../Graphics/monkey.obj", "../Graphics/", allPrims);
 	
 	// Test Image
-	int imageScale = 4;
+	int imageScale = 1;
 	g_imgdimsx = 750/imageScale;
 	g_imgdimsy = 480/imageScale;
 
@@ -43,8 +43,8 @@ int main()
 	g_upVec.z    = -1;
 	g_fovy       = 30;
 
-	vec3 lightLoc = vec3(0, -0.5, 0);
-	vec3 lightColor = vec3(.6, .6, .6);
+	vec3 lightLoc = vec3(1, -0.1, 1);
+	vec3 lightColor = vec3(.9, .9, .9);
 	PointLight* ptLight = new PointLight(lightLoc, lightColor);
 	Light* light = ptLight;
 	allPrims._lights.push_back(light);

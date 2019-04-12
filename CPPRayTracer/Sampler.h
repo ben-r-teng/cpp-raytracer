@@ -16,6 +16,7 @@ public:
 
 	Sampler();
 	Sampler(int samplesPerPixel, int imgDimsX, int imgDimsY);
+	Sampler(int samplesPerPixel, int imgDimsX, int imgDimsY, int _currPixelCoordY);
 	~Sampler();
 	bool getSample(Sample * sample); // Pass in pointer, modify pointed to sample; Return false if no samples left
 };

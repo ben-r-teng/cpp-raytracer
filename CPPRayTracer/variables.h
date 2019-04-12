@@ -24,5 +24,6 @@ extern float g_kQuad;
 
 extern bool g_vertexNormalInterp;
 extern bool g_multithreadCPU;
+extern int g_samplesPerPixel;
 
 #endif

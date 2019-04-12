@@ -20,4 +20,5 @@ float g_kQuad = 0.0f;
 // Settings
 string g_outName = "outputImg.png";
 bool g_vertexNormalInterp = true;
-bool g_multithreadCPU = false;
+bool g_multithreadCPU = true;
+int g_samplesPerPixel = 1;
