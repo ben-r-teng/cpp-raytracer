@@ -14,6 +14,7 @@
 #include "AllPrimitives.h"
 #include "Printer.h"
 #include "Color.h"
+#include <thread>
 
 using namespace glm;
 
@@ -35,4 +36,5 @@ public:
 	Scene(vec3 eyeLoc, int imgDimsX, int imgDimsY, float fovy_in, AllPrimitives* allPrims);
 	~Scene();
 	void render(); // Main rendering loop
+	void renderThread();
 };

@@ -22,4 +22,7 @@ extern float g_kConst;
 extern float g_kLin;
 extern float g_kQuad;
 
+extern bool g_vertexNormalInterp;
+extern bool g_multithreadCPU;
+
 #endif
